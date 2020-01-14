@@ -29,6 +29,17 @@
       <min value="1"/>
       <max value="*"/>
     </element>
+    <element id="ED.value">
+      <path value="ED.value"/>
+      <representation value="xmlAttr"/>
+      <label value="Value"/>
+      <definition value="The actual value of ED."/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="string"/>
+      </type>
+    </element>
     <element id="ED.compression">
       <path value="ED.compression"/>
       <representation value="xmlAttr"/>

@@ -40,5 +40,11 @@
       <path value="ON.given"/>
       <max value="0"/>
     </element>
+    <element id="ON.value">
+      <path value="ON.value"/>
+      <type>
+        <code value="string"/>
+      </type>
+    </element>
   </differential>
 </StructureDefinition>

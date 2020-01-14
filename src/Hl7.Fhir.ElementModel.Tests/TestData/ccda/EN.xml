@@ -96,6 +96,14 @@
         <code value="string"/>
       </type>
     </element>
+    <element id="EN.value">
+      <path value="EN.value"/>
+      <min value="0"/>
+      <max value="1"/>
+      <type>
+        <code value="string"/>
+      </type>
+    </element>
     <element id="EN.validTime">
       <path value="EN.validTime"/>
       <label value="Valid Time"/>

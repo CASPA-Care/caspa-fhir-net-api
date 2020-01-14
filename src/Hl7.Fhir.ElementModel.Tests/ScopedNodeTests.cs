@@ -213,12 +213,7 @@ namespace Hl7.Fhir.ElementModel.Tests
 
             var error = typedElement.VisitAndCatch();
 
-            Console.WriteLine("Test");
-
-            // realmCode
-            // id
-            // title
-            // languageCode
+            Console.WriteLine("CCDA Parsing complete");
         }
 
         private class CCDAResourceResolver : IResourceResolver
