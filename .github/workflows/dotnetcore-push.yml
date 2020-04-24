@@ -23,7 +23,7 @@ jobs:
     - name: Build NuGet
       run: dotnet pack --no-build -c Debug src/Hl7.Fhir.Core/Hl7.Fhir.Core.csproj --include-symbols -o .
     - name: Publish NuGet
-      run: dotnet nuget push *.nupkg --source "https://nuget.pkg.github.com/caspa-care/index.json" -k GITHUB_TOKEN --no-symbols true
+      run: dotnet nuget push *.nupkg --source "https://nuget.pkg.github.com/caspa-care/index.json" -k ${{ secrets.GITHUB_TOKEN }} --no-symbols true
       #uses: rohith/publish-nuget@v2.3.0
       #with:
       # Filepath of the project to be packaged, relative to root of repository
