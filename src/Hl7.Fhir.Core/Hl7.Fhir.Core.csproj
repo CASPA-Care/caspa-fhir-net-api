@@ -8,7 +8,7 @@
 
    <PropertyGroup>
     <Version>$(FhirApiVersion)</Version>
-    <PackageId>Hl7.Fhir.STU3</PackageId>
+    <PackageId>caspa-fhir-net-api</PackageId>
     <Title>HL7 FHIR Core support API for STU3</Title>	
     <Summary>Core .NET support for working with HL7 FHIR. Supports FHIR STU3 (3.0)</Summary>
     <Description>This is the core support library for HL7's FHIR standard (http://hl7.org/fhir). It contains the core functionality to working with RESTful FHIR servers: POCO classes for FHIR, parsing/serialization of FHIR data and a FhirClient for easy access to FHIR servers.</Description>
