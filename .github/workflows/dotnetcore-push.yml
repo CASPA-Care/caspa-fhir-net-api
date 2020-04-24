@@ -26,6 +26,6 @@ jobs:
       # Filepath of the project to be packaged, relative to root of repository
         PROJECT_FILE_PATH: src/Hl7.Fhir.Core/Hl7.Fhir.Core.csproj
       # NuGet package id to check against version changes, defaults to project name
-        PACKAGE_NAME: fhir-net-api
+        PACKAGE_NAME: caspa-fhir-net-api
       # Filepath containing version info, relative to root of repository
-        VERSION_FILE_PATH: src/Hl7.Fhir.Core/version.txt
+        VERSION_FILE_PATH: version.txt
