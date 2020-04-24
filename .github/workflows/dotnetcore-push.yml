@@ -19,7 +19,7 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build src/Hl7.Fhir.Core/Hl7.Fhir.Core.csproj --configuration Debug --no-restore --framework netcoreapp3.1
+      run: dotnet build src/Hl7.Fhir.Core/Hl7.Fhir.Core.csproj --configuration Debug --no-restore --framework netstandard2.0
     - name: Publish NuGet   
       uses: rohith/publish-nuget@v2.3.0
       with:
