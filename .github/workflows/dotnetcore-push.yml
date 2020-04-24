@@ -29,3 +29,4 @@ jobs:
         PACKAGE_NAME: caspa-fhir-net-api
       # Filepath containing version info, relative to root of repository
         VERSION_FILE_PATH: version.txt
+        NUGET_KEY: GITHUB_TOKEN
