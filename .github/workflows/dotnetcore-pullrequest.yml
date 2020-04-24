@@ -2,7 +2,7 @@ name: .NET Core
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ caspa/release ]
 
 jobs:
   build:
@@ -18,6 +18,4 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet build src/Hl7.Fhir.Core/Hl7.Fhir.Core.csproj --configuration Debug --no-restore
