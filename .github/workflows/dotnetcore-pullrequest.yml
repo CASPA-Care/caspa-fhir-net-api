@@ -1,0 +1,23 @@
+name: .NET Core
+
+on:
+  pull_request:
+    branches: [ caspa/release ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build src/Hl7.Fhir.Core/Hl7.Fhir.Core.csproj --configuration Debug --no-restore --framework netstandard2.0

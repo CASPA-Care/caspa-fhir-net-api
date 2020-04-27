@@ -1,0 +1,39 @@
+name: .NET Core
+
+on:
+  push:
+    branches: [ caspa/release ]
+jobs:
+  build:
+
+    #runs-on: ubuntu-latest
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+        source-url: https://nuget.pkg.github.com/caspa-care/index.json
+      env:
+        NUGET_AUTH_TOKEN: ${{secrets.packageSecret}}   
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build src/Hl7.Fhir.Core/Hl7.Fhir.Core.csproj --configuration Debug --no-restore --framework netstandard2.0
+    - name: Build NuGet
+      run: dotnet pack --no-build -c Debug src/Hl7.Fhir.Core/Hl7.Fhir.Core.csproj --include-symbols -o .
+    - name: Publish NuGet
+      run: dotnet nuget push *.nupkg -s "https://nuget.pkg.github.com/caspa-care/index.json" -k ${{secrets.packageSecret}} --no-symbols true
+      #uses: rohith/publish-nuget@v2.3.0
+      #with:
+      # Filepath of the project to be packaged, relative to root of repository
+        #PROJECT_FILE_PATH: src/Hl7.Fhir.Core/Hl7.Fhir.Core.csproj
+      # NuGet package id to check against version changes, defaults to project name
+        #PACKAGE_NAME: caspa-fhir-net-api
+      # Filepath containing version info, relative to root of repository
+        #VERSION_FILE_PATH: version.txt
+        #NUGET_KEY: GITHUB_TOKEN
