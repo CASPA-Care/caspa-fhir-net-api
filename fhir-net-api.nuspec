@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>fhir-net-api</id>
+    <version>1.0.0</version>
+    <authors>CASPA-Care</authors>
+    <owners>CASPA-Care</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/CASPA-Care/fhir-net-api</projectUrl>
+    <description>Caspa HL7 Fhir project based on the FirelyTeam implementation</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2020</copyright>
+    <tags></tags>
+    <dependencies>
+    </dependencies>
+  </metadata>
+</package>

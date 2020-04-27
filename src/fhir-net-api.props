@@ -7,8 +7,8 @@
     <Authors>Ewout Kramer (ewout@fire.ly) and contributors</Authors>
     <Company>Firely (https://fire.ly)</Company>
     <Copyright>Copyright 2013-2020 Firely.  Contains materials (C) HL7 International</Copyright>
-    <PackageProjectUrl>https://github.com/FirelyTeam/fhir-net-api</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/FirelyTeam/fhir-net-api</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/CASPA-Care/fhir-net-api</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/CASPA-Care/fhir-net-api</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>icon-fhir-32.png</PackageIcon>
     <PackageReleaseNotes>See https://github.com/FirelyTeam/fhir-net-api/releases</PackageReleaseNotes>
