@@ -58,9 +58,11 @@ namespace Hl7.Fhir.Rest
             setAgent(request, ".NET FhirClient for FHIR " + Model.ModelInfo.Version);
 
             if (!useFormatParameter)
-                request.Accept = Hl7.Fhir.Rest.ContentType.BuildContentType(format, forBundle: false);
+                request.Headers["Accept"] = "application/fhir+json";
+                //request.Headers["Accept"] = Hl7.Fhir.Rest.ContentType.BuildContentType(format, forBundle: false);
 
-            if (interaction.IfMatch != null) request.Headers["If-Match"] = interaction.IfMatch;
+
+                if (interaction.IfMatch != null) request.Headers["If-Match"] = interaction.IfMatch;
             if (interaction.IfNoneMatch != null) request.Headers["If-None-Match"] = interaction.IfNoneMatch;
 #if NETSTANDARD1_1
             if (interaction.IfModifiedSince != null) request.Headers["If-Modified-Since"] = interaction.IfModifiedSince.Value.UtcDateTime.ToString();
@@ -194,7 +196,8 @@ namespace Hl7.Fhir.Rest
                 // This is done by the caller after the OnBeforeRequest is called so that other properties
                 // can be set before the content is committed
                 // request.WriteBody(CompressRequestBody, body);
-                request.ContentType = Hl7.Fhir.Rest.ContentType.BuildContentType(format, forBundle: false);
+                //request.Headers["Content-Type"] = Hl7.Fhir.Rest.ContentType.BuildContentType(format, forBundle: false);
+                request.Headers["Content-Type"] = "application/fhir+json";
             }
         }
 
