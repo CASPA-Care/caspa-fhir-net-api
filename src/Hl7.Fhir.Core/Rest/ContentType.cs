@@ -98,7 +98,7 @@ namespace Hl7.Fhir.Rest
             else
                 throw new ArgumentException("Cannot determine content type for data format " + format);
 
-            return contentType + ";charset=" + Encoding.UTF8.WebName;
+            return contentType;
         }
 
 
