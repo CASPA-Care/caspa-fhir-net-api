@@ -10,6 +10,7 @@ using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
 using Hl7.Fhir.Support;
 using Hl7.Fhir.Utility;
+using Newtonsoft.Json;
 using System;
 using System.IO.Compression;
 using System.Net;
@@ -46,7 +47,7 @@ namespace Hl7.Fhir.Rest
         {
             BaseUrl = baseUrl;
             UseFormatParameter = false;
-            PreferredFormat = ResourceFormat.Xml;
+            PreferredFormat = ResourceFormat.Json;
             Timeout = 100 * 1000;       // Default timeout is 100 seconds            
             PreferredReturn = Rest.Prefer.ReturnRepresentation;
             PreferredParameterHandling = null;
