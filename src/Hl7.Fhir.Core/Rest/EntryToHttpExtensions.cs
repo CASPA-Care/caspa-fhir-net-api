@@ -193,6 +193,9 @@ namespace Hl7.Fhir.Rest
                     new FhirXmlSerializer().SerializeToBytes(data, summary: Fhir.Rest.SummaryType.False) :
                     new FhirJsonSerializer().SerializeToBytes(data, summary: Fhir.Rest.SummaryType.False);
 
+                var str = System.Text.Encoding.Default.GetString(body);
+
+
                 // This is done by the caller after the OnBeforeRequest is called so that other properties
                 // can be set before the content is committed
                 // request.WriteBody(CompressRequestBody, body);
