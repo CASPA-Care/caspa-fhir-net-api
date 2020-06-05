@@ -122,12 +122,12 @@ namespace Hl7.Fhir.Rest
         }
 
 
-        public TransactionBuilder Update(string id, Resource body, Bundle.HTTPVerb verb = Bundle.HTTPVerb.PUT, bool addPath = true, string versionId=null)
+        public TransactionBuilder Update(string id, Resource body, string resourceType, string nhsNumber, string identifier, Bundle.HTTPVerb verb = Bundle.HTTPVerb.PUT, bool addPath = true, string versionId=null)
         {
             var entry = newEntry(verb, InteractionType.Update);
             entry.Resource = body;
             entry.Request.IfMatch = createIfMatchETag(versionId);
-            var path = addPath ? newRestUrl().AddPath(body.TypeName, id) : newRestUrl();
+            var path = addPath ? newRestUrl().AddPath(resourceType).AddParam("subject", $"https://demographics.spineservices.nhs.uk/STU3/Patient/{nhsNumber}").AddParam("identifier", $"{identifier}") : newRestUrl();
             addEntry(entry, path);
 
             return this;

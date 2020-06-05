@@ -349,7 +349,7 @@ namespace Hl7.Fhir.Rest
         /// <remarks>Throws an exception when the update failed, in particular when an update conflict is detected and the server returns a HTTP 409.
         /// If the resource does not yet exist - and the server allows client-assigned id's - a new resource with the given id will be
         /// created.</remarks>
-        public Task<TResource> UpdateAsync<TResource>(TResource resource, Bundle.HTTPVerb verb = Bundle.HTTPVerb.PUT, bool decodeURL = false, bool addPath = true, bool versionAware=false) where TResource : Resource
+        public Task<TResource> UpdateAsync<TResource>(TResource resource, string resourceType, string nhsNumber, string identifier, Bundle.HTTPVerb verb = Bundle.HTTPVerb.PUT, bool decodeURL = false, bool addPath = true, bool versionAware=false) where TResource : Resource
         {
             if (resource == null) throw Error.ArgumentNull(nameof(resource));
             if (resource.Id == null) throw Error.Argument(nameof(resource), "Resource needs a non-null Id to send the update to");
@@ -357,9 +357,9 @@ namespace Hl7.Fhir.Rest
             var upd = new TransactionBuilder(Endpoint);
 
             if (versionAware && resource.HasVersionId)
-                upd.Update(resource.Id, resource, verb, addPath, versionId: resource.VersionId);
+                upd.Update(resource.Id, resource, resourceType, nhsNumber, identifier, verb, addPath, versionId: resource.VersionId);
             else
-                upd.Update(resource.Id, resource, verb, addPath);
+                upd.Update(resource.Id, resource, resourceType, nhsNumber, identifier, verb, addPath);
 
             return internalUpdateAsync<TResource>(resource, upd.ToBundle(), decodeURL);
         }
@@ -374,9 +374,9 @@ namespace Hl7.Fhir.Rest
         /// <remarks>Throws an exception when the update failed, in particular when an update conflict is detected and the server returns a HTTP 409.
         /// If the resource does not yet exist - and the server allows client-assigned id's - a new resource with the given id will be
         /// created.</remarks>
-        public TResource Update<TResource>(TResource resource, Bundle.HTTPVerb verb = Bundle.HTTPVerb.PUT, bool versionAware = false) where TResource : Resource
+        public TResource Update<TResource>(TResource resource, string resourceType, string nhsNumber, string identifier, Bundle.HTTPVerb verb = Bundle.HTTPVerb.PUT, bool versionAware = false) where TResource : Resource
         {
-            return UpdateAsync<TResource>(resource, verb, versionAware).WaitResult();
+            return UpdateAsync<TResource>(resource, resourceType, nhsNumber, identifier, verb, versionAware).WaitResult();
         }
 
         /// <summary>
@@ -389,7 +389,7 @@ namespace Hl7.Fhir.Rest
         /// <returns>The body of the updated resource, unless ReturnFullResource is set to "false"</returns>
         /// <remarks>Throws an exception when the update failed, in particular when an update conflict is detected and the server returns a HTTP 409.
         /// If the criteria passed in condition do not match a resource a new resource with a server assigned id will be created.</remarks>
-        public Task<TResource> UpdateAsync<TResource>(TResource resource, SearchParams condition, bool versionAware = false) where TResource : Resource
+        public Task<TResource> UpdateAsync<TResource>(TResource resource, string resourceType, string nhsNumber, string identifier, SearchParams condition, bool versionAware = false) where TResource : Resource
         {
             if (resource == null) throw Error.ArgumentNull(nameof(resource));
             if (condition == null) throw Error.ArgumentNull(nameof(condition));
@@ -413,10 +413,10 @@ namespace Hl7.Fhir.Rest
         /// <returns>The body of the updated resource, unless ReturnFullResource is set to "false"</returns>
         /// <remarks>Throws an exception when the update failed, in particular when an update conflict is detected and the server returns a HTTP 409.
         /// If the criteria passed in condition do not match a resource a new resource with a server assigned id will be created.</remarks>
-        public TResource Update<TResource>(TResource resource, SearchParams condition, bool versionAware = false)
+        public TResource Update<TResource>(TResource resource, string resourceType, string nhsNumber, string identifier, SearchParams condition, bool versionAware = false)
             where TResource : Resource
         {
-            return UpdateAsync(resource, condition, versionAware).WaitResult();
+            return UpdateAsync(resource, resourceType, nhsNumber, identifier, condition, versionAware).WaitResult();
         }
         private Task<TResource> internalUpdateAsync<TResource>(TResource resource, Bundle tx, bool decodeURL = false) where TResource : Resource
         {
