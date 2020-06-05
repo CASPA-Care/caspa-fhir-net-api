@@ -105,10 +105,10 @@ namespace Hl7.Fhir.Rest
         Resource TypeOperation<TResource>(string operationName, Parameters parameters = null, bool useGet = false) where TResource : Resource;
         Task<Resource> TypeOperationAsync(string operationName, string typeName, Parameters parameters = null, bool useGet = false);
         Task<Resource> TypeOperationAsync<TResource>(string operationName, Parameters parameters = null, bool useGet = false) where TResource : Resource;
-        TResource Update<TResource>(TResource resource, Bundle.HTTPVerb verb = Bundle.HTTPVerb.PUT, bool versionAware = false) where TResource : Resource;
-        TResource Update<TResource>(TResource resource, SearchParams condition, bool versionAware = false) where TResource : Resource;
-        Task<TResource> UpdateAsync<TResource>(TResource resource, Bundle.HTTPVerb verb = Bundle.HTTPVerb.PUT, bool addPath = true, bool decodeURL = false, bool versionAware = false) where TResource : Resource;
-        Task<TResource> UpdateAsync<TResource>(TResource resource, SearchParams condition, bool versionAware = false) where TResource : Resource;
+        TResource Update<TResource>(TResource resource, string resourceType, string nhsNumber, string identifier, Bundle.HTTPVerb verb = Bundle.HTTPVerb.PUT, bool versionAware = false) where TResource : Resource;
+        TResource Update<TResource>(TResource resource, string resourceType, string nhsNumber, string identifier, SearchParams condition, bool versionAware = false) where TResource : Resource;
+        Task<TResource> UpdateAsync<TResource>(TResource resource, string resourceType, string nhsNumber, string identifier, Bundle.HTTPVerb verb = Bundle.HTTPVerb.PUT, bool addPath = true, bool decodeURL = false, bool versionAware = false) where TResource : Resource;
+        Task<TResource> UpdateAsync<TResource>(TResource resource, string resourceType, string nhsNumber, string identifier, SearchParams condition, bool versionAware = false) where TResource : Resource;
         Bundle WholeSystemHistory(DateTimeOffset? since = default(DateTimeOffset?), int? pageSize = default(int?), SummaryType summary = SummaryType.False);
         Task<Bundle> WholeSystemHistoryAsync(DateTimeOffset? since = default(DateTimeOffset?), int? pageSize = default(int?), SummaryType summary = SummaryType.False);
         Resource WholeSystemOperation(string operationName, Parameters parameters = null, bool useGet = false);
