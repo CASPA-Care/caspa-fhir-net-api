@@ -352,7 +352,7 @@ namespace Hl7.Fhir.Rest
         public Task<TResource> UpdateAsync<TResource>(TResource resource, string resourceType, string nhsNumber, string identifier, Bundle.HTTPVerb verb = Bundle.HTTPVerb.PUT, bool decodeURL = false, bool addPath = true, bool versionAware=false) where TResource : Resource
         {
             if (resource == null) throw Error.ArgumentNull(nameof(resource));
-            if (resource.Id == null) throw Error.Argument(nameof(resource), "Resource needs a non-null Id to send the update to");
+            //if (resource.Id == null) throw Error.Argument(nameof(resource), "Resource needs a non-null Id to send the update to");
 
             var upd = new TransactionBuilder(Endpoint);
 
